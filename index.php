@@ -1,1 +1,1 @@
-<?php echo "string"; ?>
+<?php echo "strings"; ?>
