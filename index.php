@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>güncellendi</title>
+	<title>testtermianl</title>
 </head>
 <body>
 
