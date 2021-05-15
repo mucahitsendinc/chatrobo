@@ -139,6 +139,7 @@
 }
 #chatrobo-opened .chatrobo .chatrobo-messageform textarea:focus{
     outline:0px;
+    background-color: #DCF8C6;;
 }
 #chatrobo-opened .chatrobo .chatrobo-messageform button{
     width:30px;
@@ -153,15 +154,18 @@
 }
 @media (max-width: 991px) {
     #chatrobo-opened .chatrobo .chatrobo-messageform{
-        width: 95vw;  
+        width: 95vw; 
         /*280*/
     }
     #chatrobo-opened .chatrobo .chatrobo-messageform textarea{
-        width:90%;
+        width:85vw;
+        padding:1vw;margin:0;
+        height: 10vw;
         /*230*/
     }
     #chatrobo-opened .chatrobo .chatrobo-messageform button{
-        width: 5%;  
+        width: 8vw;  
+        height: 12vw;
         /*30*/
     }
     #chatrobo-opened .chatrobo .chatrobo-baloon .sender-title a{

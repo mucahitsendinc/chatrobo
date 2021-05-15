@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>ChatRobo</title>
+	<link rel="shortcut icon" href="assets/image/robot.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/chatrobo.css">
 	<link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome-all.min.css">
@@ -12,26 +13,18 @@
 	</div>
 	<div id="chatrobo-opened">
 		<div class="chatrobo">
-			<div class="chatrobo-title">
-				<h1>ChatRobo</h1>
+			<div class="chatrobo-title" id="chatrobo-title">
+				<h1 id="title-text">ChatRobo</h1>
 				<div class="chatrobo-closeBtn" id="chatroboClosebtn">X</div>
 			</div>
 			<div class="chatrobo-messages" id="chatrobo-messages">
 				
-				<div class="chatrobo-baloon send">
-					<div class="sender-title">
-						<a href="https://github.com/mucahitsendinc/chatrobo">ChatRobo</a>
-					</div>
-					<p>asdasdasdasdasdasdasdasdasdasdasdasdasdasd</p>
-				</div>
-				<div class="chatrobo-baloon sender">
-					<p>asdasd</p>
-				</div>
+				
 					
 			</div>
 			<div class="chatrobo-messageform">
 				<form action="" id="chatroboForm" method="post">
-					<textarea name="message" id="message" rows="2" placeholder="Mesaj..."></textarea>
+					<textarea name="message" id="message" rows="2" placeholder="Mesaj...">tokenchatrobo="testTokeni"</textarea>
 					<button type="submit" value="1"><i class="fas fa-paper-plane"></i></button>
 				</form>
 			</div>

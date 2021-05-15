@@ -1,1 +1,3 @@
-<?php echo $_POST['message']; ?>
+<?php 
+
+?>
