@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     var chatrobo = 'chatrobo';
     var chatroboscreen = 'chatrobo-opened';
     var chatroboClosebtn = 'chatroboClosebtn';
@@ -7,41 +7,47 @@ $(function () {
     var messages = document.getElementById('chatrobo-messages');
     var sending = document.getElementById('message');
 
-    var messageHead ='<div class="chatrobo-baloon send"><div class="sender-title"><a target="_blank" href="https://github.com/mucahitsendinc/chatrobo" >ChatRobo</a></div><p>';
-    var messageFoot ='</p></div>';
+    var messageHead = '<div class="chatrobo-baloon send"><div class="sender-title"><a target="_blank" href="https://github.com/mucahitsendinc/chatrobo" >ChatRobo</a></div><p>';
+    var messageFoot = '</p></div>';
     var smessageHead = '<div class="chatrobo-baloon sender"><p>';
     var smessageFoot = '</p></div>';
 
     document.getElementById(chatroboscreen).style.display = "block";
-    function chatScroll(){
+
+    function chatScroll() {
         messages.scrollTo(0, messages.scrollHeight);
     }
-    $('#'+chatrobo).on('click', function () {
-        document.getElementById(chatrobo).style.display = "none";
+    $('#' + chatrobo).on('click', function() {
+        document.getElementById(chatrobo).classList.add('animate__zoomOutLeft');
+        document.getElementById(chatrobo).classList.remove('animate__zoomInUp');
         document.getElementById(chatroboscreen).style.visibility = "visible";
-        document.getElementById(chatroboscreen).style.marginLeft ="0vw";
+        document.getElementById(chatroboscreen).classList.add('animate__zoomInUp');
+        document.getElementById(chatroboscreen).classList.remove('animate__zoomOutLeft');
     });
-    $('#' + chatroboClosebtn).on('click', function () {
-        document.getElementById(chatrobo).style.display = "block";
+    $('#' + chatroboClosebtn).on('click', function() {
+        document.getElementById(chatrobo).classList.remove('animate__zoomOutLeft');
+        document.getElementById(chatrobo).classList.add('animate__zoomInUp');
         document.getElementById(chatroboscreen).style.visibility = "hidden";
-        document.getElementById(chatroboscreen).style.marginLeft = "-100vw";
+        document.getElementById(chatroboscreen).classList.remove('animate__zoomInUp');
+        document.getElementById(chatroboscreen).classList.add('animate__zoomOutLeft');
+
     });
-    $("#message").keypress(function (e) {
+    $("#message").keypress(function(e) {
         var code = (e.keyCode ? e.keyCode : e.which);
-        if (e.shiftKey!=true) {
+        if (e.shiftKey != true) {
             if (code == 13) {
                 e.preventDefault();
                 $("#chatroboForm").submit();
             }
         }
-        
+
     });
-    $('#chatroboForm').submit(function (e) {
-        e.preventDefault(); 
+    $('#chatroboForm').submit(function(e) {
+        e.preventDefault();
 
         var form = $('#chatroboForm');
         var url = 'app/chatroboPhp/index.php';
-        if (message.value.length>0) {
+        if (message.value.length > 0) {
             messages.innerHTML = messages.innerHTML + smessageHead + message.value + smessageFoot;
             chatScroll();
 
@@ -50,7 +56,7 @@ $(function () {
                 type: "POST",
                 url: url,
                 data: form.serialize(), // serializes the form's elements.
-                success: function (data) {
+                success: function(data) {
                     switch (data) {
                         case "success":
                             chatroboAdmin();
@@ -71,22 +77,26 @@ $(function () {
 
         }
     });
-    function chatroboAdmin(){
-        title.style.backgroundColor="red";
-        text.innerHTML="ChatRobo - admin";
-        messages.innerHTML="";
+
+    function chatroboAdmin() {
+        title.style.backgroundColor = "red";
+        text.innerHTML = "ChatRobo - admin";
+        messages.innerHTML = "";
     }
-    function chatroboAdminOff(){
+
+    function chatroboAdminOff() {
         title.style.backgroundColor = "#09b83e";
         text.innerHTML = "ChatRobo";
         messages.innerHTML = "";
 
     }
-    function chatClear(){
-        messages.innerHTML="";
+
+    function chatClear() {
+        messages.innerHTML = "";
     }
-    function addMessage(data){
-        messages.innerHTML = messages.innerHTML + messageHead + data+messageFoot;
+
+    function addMessage(data) {
+        messages.innerHTML = messages.innerHTML + messageHead + data + messageFoot;
         chatScroll();
     }
 });
