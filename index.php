@@ -26,13 +26,12 @@
 			</div>
 			<div class="chatrobo-messageform">
 				<form action="" id="chatroboForm" method="post">
-					<textarea name="message" id="message" rows="2" placeholder="Merhaba diyerek başlayabilirsin"></textarea>
+					<textarea name="message" id="message" rows="2" placeholder="Merhaba ile başla...">/help</textarea>
 					<button type="submit" value="1"><i class="fas fa-paper-plane"></i></button>
 				</form>
 			</div>
 		</div>
 	</div>
-
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/chatrobo.js"></script>
 </body>

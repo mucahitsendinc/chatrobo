@@ -77,7 +77,7 @@ $(function() {
 
         }
     });
-
+  
     function chatroboAdmin() {
         title.style.backgroundColor = "red";
         text.innerHTML = "ChatRobo - admin";
@@ -90,8 +90,11 @@ $(function() {
         messages.innerHTML = "";
 
     }
-
+    function chatCommands(deger){
+        sending.value = document.getElementById(deger).innerHTML;
+    }
     function chatClear() {
+        
         messages.innerHTML = "";
     }
 

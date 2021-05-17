@@ -19,4 +19,5 @@ function safer($metin){
     $safe=str_replace('tokenchatrobo','',$safe);
     return $safe;
 }
+
 ?>

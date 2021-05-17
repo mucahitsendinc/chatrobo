@@ -137,7 +137,16 @@
     box-shadow: 0px .5px 1px #000;
     word-wrap: break-word;
 }
-
+#chatrobo-opened .chatrobo .chatrobo-baloon .commands {
+    cursor: pointer;
+    color:rgb(40, 98, 146);
+    width: 100%;
+    transition: 300ms all;;
+}
+#chatrobo-opened .chatrobo .chatrobo-baloon .commands:hover {
+    font-size:22px !important;
+    color:rgb(0, 140, 255)
+}
 #chatrobo-opened .chatrobo .chatrobo-baloon p {
     padding: 5px;
 }

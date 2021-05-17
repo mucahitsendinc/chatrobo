@@ -45,20 +45,20 @@ fwrite ( $dosya , $jsontest2 ) ;
 fclose ($dosya);
 */
 
-$file=fopen("messages/sender.txt","r");
+$file=fopen("messages/chatrobodialogs.json","r");
 
 $readfile=fgets($file); 
 
 
 fclose($file);
-echo $readfile.'<br>';
-foreach (json_decode($readfile) as $key) {
-    echo '<br>';
-    foreach ($key as $keys) {
-        echo '->'.$keys;
-        
-    }
-    echo ' = '.count($key);
-}
+echo '<pre>';
+print_r(json_decode($readfile)); 
+echo '</pre>';
+
+echo'--<br>';
+$file= file_get_contents("messages/chatrobodialogs.json");
+$json=json_decode($file);
+
+echo $json[0][1];
 
 ?>
