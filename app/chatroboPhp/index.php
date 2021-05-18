@@ -22,9 +22,17 @@ if (isset($_POST['message'])) {
             die;
         }
 
-        if ($command=="tokenchatrobo" && safer($variable)==$_TOKEN) {
-            echo "success";
-            $_SESSION['chatrobo']="admin";
+        if ($command=="tokenchatrobo" ) {
+            if(safer($variable)==$_TOKEN){
+                echo "success";
+                $_SESSION['chatrobo']="admin";
+            }else{
+                /* Komut kullanımı ALERT */
+                $onclick="document.getElementById('message').value='/'+document.getElementById('".$command."').innerHTML+' '";
+                echo "Komut kullanımı şu şekilde olmalı :<br>";
+                echo'<a class="commands" onclick="'.$onclick.'">/<span id="'.$command.'" >'. $command.' değer</span></a> <br>';
+            }
+            
         }else if ($command=="quit" && $_SESSION['chatrobo']=="admin") {
             echo "quit";
             unset($_SESSION['chatrobo']);
@@ -34,16 +42,11 @@ if (isset($_POST['message'])) {
             echo'ChatRobo Komutları,İhtiyacın olan komutu nasıl kullanacağını öğrenmek için bana gönderirsen sana söyleyebilirim.<br><br>';
             if ($_SESSION['chatrobo']=="admin") {
                 foreach ($_ADMIN_COMMANDS as $val ) {
-                   
                     foreach ($val as $arraycommand) {
                         if ($val[0]==$arraycommand) {
                             $onclick="document.getElementById('message').value='/'+document.getElementById('".$arraycommand."').innerHTML";
                             echo'<a class="commands" onclick="'.$onclick.'">/<span id="'.$arraycommand.'" >'. $arraycommand.'</span></a> <br>';
-
-
                         }
-
-                       
                     }
                 }
             }
@@ -55,7 +58,16 @@ if (isset($_POST['message'])) {
                     }
                 }
             }
-        
+        }else if($command=="ekle" && $_SESSION['chatrobo']="admin"){
+            $commandParams=(count($fullcommand));
+            if ($commandParams<4) {
+                /* Komut kullanımı ALERT */
+                $onclick="document.getElementById('message').value='/'+document.getElementById('".$command."').innerHTML+' '";
+                echo "Komut kullanımı şu şekilde olmalı :<br>";
+                echo'<a class="commands" onclick="'.$onclick.'">/<span id="'.$command.'" >'. $command.' (anahtarkelime1,...) mesaj</span></a> <br>';
+            }else{
+                echo "dogru";
+            }
         }else{
             echo "Komut geçersiz veya hatalı! <br>/yardim veya /help yazabilirsin.";
         }
@@ -68,8 +80,11 @@ if (isset($_POST['message'])) {
     /** Mesajlar */
     if (!isset($_SESSION['messages'])) {
         
-        
-
+        echo"Mesaj test lorem ipsum<br>";
+        echo'<button class="green">Mesaj Ekle</button>';
+        echo'<button class="primary">Mesaj Düzenle</button>';
+        echo'<button class="red">Mesaj Sil</button>';
+        echo'<button class="orange">Mesaj Listele</button>';
     }else{
         echo"Merhabadan sonraki mesajlar...";
     }

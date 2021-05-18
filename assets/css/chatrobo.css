@@ -112,6 +112,7 @@
 }
 
 #chatrobo-opened .chatrobo .chatrobo-title .chatrobo-closeBtn:hover {
+    box-shadow: 0px 0px 6px 0px rgb(78, 12, 12);
     background-color: red;
 }
 
@@ -120,6 +121,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
+    --animate-duration: .3s;
 }
 
 #chatrobo-opened .chatrobo .sender {
@@ -132,21 +134,61 @@
     border-radius: 0px 10px 10px 10px;
 }
 
+#chatrobo-opened .chatrobo .send button {
+    padding: 0px;
+    outline: 0px;
+    border: 0px;
+    width: 45%;
+    margin: 1%;
+    padding: 4%;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px #000;
+    color: white;
+    transition: var(--transition);
+}
+
+#chatrobo-opened .chatrobo .send button:hover,
+button:focus {
+    color: rgb(0, 0, 0);
+    transform: translateY(-0.25em);
+}
+
+#chatrobo-opened .chatrobo .send .green {
+    background-color: #33d9b2;
+}
+
+#chatrobo-opened .chatrobo .send .primary {
+    background-color: #34ace0;
+}
+
+#chatrobo-opened .chatrobo .send .red {
+    background-color: #ff5252;
+}
+
+#chatrobo-opened .chatrobo .send .orange {
+    background-color: #ffb142;
+}
+
 #chatrobo-opened .chatrobo .chatrobo-baloon {
     margin: 10px;
     box-shadow: 0px .5px 1px #000;
     word-wrap: break-word;
 }
+
 #chatrobo-opened .chatrobo .chatrobo-baloon .commands {
     cursor: pointer;
-    color:rgb(40, 98, 146);
+    color: rgb(40, 98, 146);
     width: 100%;
-    transition: 300ms all;;
+    transition: 300ms all;
+    ;
 }
+
 #chatrobo-opened .chatrobo .chatrobo-baloon .commands:hover {
-    font-size:22px !important;
-    color:rgb(0, 140, 255)
+    font-weight: bold;
+    color: rgb(0, 140, 255)
 }
+
 #chatrobo-opened .chatrobo .chatrobo-baloon p {
     padding: 5px;
 }
@@ -196,6 +238,7 @@
 }
 
 #chatrobo-opened .chatrobo .chatrobo-messageform button:hover {
+    box-shadow: 0px 0px 6px 0px #000;
     background-color: #09b83e;
     color: white;
 }
@@ -237,6 +280,13 @@
     }
     #chatrobo-opened .chatrobo {
         bottom: 50vh;
+    }
+    #chatrobo-opened .chatrobo .send button {
+        font-size: 16px;
+        width: 100%;
+        margin: 0%;
+        margin-top: 1%;
+        padding: 1%;
     }
     #chatrobo-opened .chatrobo .chatrobo-title .chatrobo-closeBtn {
         position: absolute;

@@ -3,7 +3,7 @@
 $_TOKEN="testTokeni";
 /** KULLANILMASINA İZİN VERİLEN KOMUTLAR! */
 $_ADMIN_COMMANDS=[
-        ["ekle","DiyalogTabloAdı","(anahtarkelime1,anahtarkelime2...)","mesaj"],
+        ["ekle","DiyalogTabloAdı","(anahtarkelime1,...)","mesaj"],
         ["silMesaj","DiyalogTabloAdı","mesaj",""],
         ["silAnahtar","DiyalogTabloAdı","mesajNumarası","anahtarKelime"],
         ["degistirMesaj","DiyalogTabloAdı","mesajNumarası","yeniMesaj"],

@@ -12,6 +12,7 @@ $(function() {
     var smessageHead = '<div class="chatrobo-baloon sender animate__animated animate__slideInRight""><p>';
     var smessageFoot = '</p></div>';
 
+    var sendingChecker = false;
     document.getElementById(chatroboscreen).style.display = "block";
 
     function chatScroll() {
@@ -34,7 +35,7 @@ $(function() {
     });
     $("#message").keypress(function(e) {
         var code = (e.keyCode ? e.keyCode : e.which);
-        if (e.shiftKey != true) {
+        if (e.shiftKey != true && sendingChecker == false) {
             if (code == 13) {
                 e.preventDefault();
                 $("#chatroboForm").submit();
@@ -47,14 +48,14 @@ $(function() {
 
         var form = $('#chatroboForm');
         var url = 'app/chatroboPhp/index.php';
-        
-        if (message.value.length > 0) {
+
+        if (message.value.length > 0 && sendingChecker == false) {
             messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInLeft", "");
             messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInRight", "");
             messages.innerHTML = messages.innerHTML + smessageHead + message.value + smessageFoot;
             chatScroll();
-
-            setTimeout(function () {
+            sendingChecker = true;
+            setTimeout(function() {
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -77,10 +78,13 @@ $(function() {
                     }
                 });
                 message.value = "";
-            }, 1000);
+                sendingChecker = false;
+
+            }, 300);
+
         }
     });
-  
+
     function chatroboAdmin() {
         title.style.backgroundColor = "red";
         text.innerHTML = "ChatRobo - admin";
@@ -93,11 +97,13 @@ $(function() {
         messages.innerHTML = "";
 
     }
-    function chatCommands(deger){
+
+    function chatCommands(deger) {
         sending.value = document.getElementById(deger).innerHTML;
     }
+
     function chatClear() {
-        
+
         messages.innerHTML = "";
     }
 
