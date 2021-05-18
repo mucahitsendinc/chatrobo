@@ -106,17 +106,19 @@ $(function() {
         var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
 
         if (st > lastScrollTop) {
-            if ((st+1) > maxScrollTop) {
-                
+            if ((st+1) > maxScrollTop ) {
+                console.log((st + 1) + " -> " + maxScrollTop);
                 document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
                 document.getElementById('chatrobo-goback').classList.add('animate__backOutDown');
            }
         } else {
+            if (maxScrollTop==0) {
+                return;
+            }
             document.getElementById('chatrobo-goback').style.visibility = "visible";
             document.getElementById('chatrobo-goback').classList.add('animate__backInUp');
             document.getElementById('chatrobo-goback').classList.remove('animate__backOutDown');
         }
-        console.log(st + " -> " + maxScrollTop);
         lastScrollTop = st;
     })
     function chatroboAdmin() {
@@ -140,8 +142,6 @@ $(function() {
         messages.innerHTML = "";
         sendingChecker=false;
         document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
-
-
     }
 
     function addMessage(data) {
