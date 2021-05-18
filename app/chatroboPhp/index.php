@@ -82,10 +82,7 @@ if (isset($_POST['newmessage'])) {
     if (!isset($_SESSION['messages'])) {
         
         echo"Mesaj test lorem ipsum<br>";
-        echo'<button class="green">Mesaj Ekle</button>';
-        echo'<button class="primary">Mesaj Düzenle</button>';
-        echo'<button class="red">Mesaj Sil</button>';
-        echo'<button class="orange">Mesaj Listele</button>';
+        echo getButton("orange","Test Fonksiyon");
     }else{
         echo"Merhabadan sonraki mesajlar...";
     }

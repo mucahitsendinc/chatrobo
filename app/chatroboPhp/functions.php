@@ -41,4 +41,16 @@ function getUserIP() {
     }
     return $ipaddress;
 }
+function getButton($color,$msg,$onclick=""){
+    /*
+    echo'<button class="green">Mesaj Ekle</button>';
+    echo'<button class="primary">Mesaj Düzenle</button>';
+    echo'<button class="red">Mesaj Sil</button>';
+    echo'<button class="orange">Mesaj Listele</button>';
+    */
+    if ($onclick!="") {
+        $onclick='onclick="'.$onclick.'"';
+    }
+    echo'<button class="'.$color.'" "'.$onclick.'">'.$msg.'</button>';
+}
 ?>
