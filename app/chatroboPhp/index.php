@@ -91,4 +91,5 @@ if (isset($_POST['newmessage'])) {
     
 
 }
+usleep(300000);
 ?>

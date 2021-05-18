@@ -50,41 +50,46 @@ $(function() {
         var url = 'app/chatroboPhp/index.php';
 
         if (message.value.length > 0 && sendingChecker == false) {
+            console.log(sendingChecker);
             messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInLeft", "");
             messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInRight", "");
             messages.innerHTML = messages.innerHTML + smessageHead + message.value + smessageFoot;
+            var loadingimg = '<div><img class="loading" src="assets/image/chatrobowriting.gif"></div>';
+            setTimeout(function() {
+                var loadingmessages = messages.innerHTML;
+            }, 500);
+            messages.innerHTML = messages.innerHTML.replace('<div><img class="loading" src="assets/image/chatrobowriting.gif"></div>', '');
+            messages.innerHTML = messages.innerHTML + loadingimg;
             chatScroll();
             var newmessage = new Array();
             newmessage[0] = "message";
             newmessage[1] = message.value;
             message.value = "";
             sendingChecker = true;
-            setTimeout(function() {
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: { newmessage: newmessage }, // serializes the form's elements.
-                    success: function(data) {
-                        switch (data) {
-                            case "success":
-                                chatroboAdmin();
-                                break;
-                            case "clear":
-                                chatClear();
-                                break;
-                            case "quit":
-                                chatroboAdminOff();
-                                break;
-                            default:
-                                addMessage(data);
-                                break;
-                        }
-                    }
-                });
-                message.value = "";
-                sendingChecker = false;
 
-            }, 300);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { newmessage: newmessage }, // serializes the form's elements.
+                success: function(data) {
+                    switch (data) {
+                        case "success":
+                            chatroboAdmin();
+                            break;
+                        case "clear":
+                            chatClear();
+                            break;
+                        case "quit":
+                            chatroboAdminOff();
+                            break;
+                        default:
+                            addMessage(data);
+                            break;
+                    }
+                }
+            });
+            message.value = "";
+
 
         }
     });
@@ -114,7 +119,9 @@ $(function() {
     function addMessage(data) {
         messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInLeft", "");
         messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInRight", "");
+        messages.innerHTML = messages.innerHTML.replace('<div><img class="loading" src="assets/image/chatrobowriting.gif"></div>', '');
         messages.innerHTML = messages.innerHTML + messageHead + data + messageFoot;
         chatScroll();
+        sendingChecker = false;
     }
 });

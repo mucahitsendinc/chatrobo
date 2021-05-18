@@ -124,6 +124,11 @@
     --animate-duration: .3s;
 }
 
+#chatrobo-opened .chatrobo .chatrobo-messages img.loading {
+    height: 10px;
+    padding: 20px 20px;
+}
+
 #chatrobo-opened .chatrobo .sender {
     border-radius: 10px 0px 10px 10px;
     background-color: #DCF8C6;
