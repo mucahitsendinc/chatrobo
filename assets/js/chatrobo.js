@@ -54,12 +54,16 @@ $(function() {
             messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInRight", "");
             messages.innerHTML = messages.innerHTML + smessageHead + message.value + smessageFoot;
             chatScroll();
+            var newmessage = new Array();
+            newmessage[0] = "message";
+            newmessage[1] = message.value;
+            message.value = "";
             sendingChecker = true;
             setTimeout(function() {
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: form.serialize(), // serializes the form's elements.
+                    data: { newmessage: newmessage }, // serializes the form's elements.
                     success: function(data) {
                         switch (data) {
                             case "success":

@@ -3,8 +3,8 @@ error_reporting(E_ERROR | E_PARSE);
 session_start();
 include 'config.php';
 include 'functions.php';
-if (isset($_POST['message'])) {
-    $message=$_POST['message'];
+if (isset($_POST['newmessage'])) {
+    $message=$_POST['newmessage'];
     /** Komutlar */
     if ($message[0]=="/") { 
 

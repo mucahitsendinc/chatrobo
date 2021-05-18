@@ -137,13 +137,12 @@
 #chatrobo-opened .chatrobo .send button {
     padding: 0px;
     outline: 0px;
-    border: 0px;
+    border: 0;
     width: 45%;
     margin: 1%;
     padding: 4%;
     background-color: #fff;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 0px #000;
     color: white;
     transition: var(--transition);
 }
@@ -151,7 +150,27 @@
 #chatrobo-opened .chatrobo .send button:hover,
 button:focus {
     color: rgb(0, 0, 0);
-    transform: translateY(-0.25em);
+    transform: scale(.95);
+}
+
+#chatrobo-opened .chatrobo .send .green:hover,
+.green:focus {
+    box-shadow: 0px 0px 20px 0px #00ffc3;
+}
+
+#chatrobo-opened .chatrobo .send .primary:hover,
+.primary:focus {
+    box-shadow: 0px 0px 20px 0px #00c3ff;
+}
+
+#chatrobo-opened .chatrobo .send .red:hover,
+.red:focus {
+    box-shadow: 0px 0px 20px 0px #ff0000;
+}
+
+#chatrobo-opened .chatrobo .send .orange:hover,
+.orange:focus {
+    box-shadow: 0px 0px 20px 0px #ff9500;
 }
 
 #chatrobo-opened .chatrobo .send .green {
@@ -223,6 +242,9 @@ button:focus {
 
 #chatrobo-opened .chatrobo .chatrobo-messageform textarea:focus {
     outline: 0px;
+    -webkit-box-shadow: inset 0px 0px 110px -77px rgba(0, 0, 0, 1);
+    -moz-box-shadow: inset 0px 0px 110px -77px rgba(0, 0, 0, 1);
+    box-shadow: inset 0px 0px 110px -77px rgba(0, 0, 0, 1);
     background-color: #DCF8C6;
     ;
 }
@@ -238,7 +260,7 @@ button:focus {
 }
 
 #chatrobo-opened .chatrobo .chatrobo-messageform button:hover {
-    box-shadow: 0px 0px 6px 0px #000;
+    box-shadow: #000;
     background-color: #09b83e;
     color: white;
 }
