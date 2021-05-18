@@ -4,10 +4,11 @@ session_start();
 include 'config.php';
 include 'functions.php';
 if (isset($_POST['newmessage'])) {
-    $message=$_POST['newmessage'];
+    $message=$_POST['newmessage'][1];
     /** Komutlar */
+  //  print_r( $message);die;
     if ($message[0]=="/") { 
-
+        
         $fullcommand=array_filter(explode(" ",$message));
         $command=str_replace("/","",$fullcommand[0]);
         $variable=$fullcommand[1];

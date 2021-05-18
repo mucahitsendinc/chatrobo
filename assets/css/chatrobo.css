@@ -110,14 +110,32 @@
     right: 0;
     transition: var(--transition);
 }
-
+#chatrobo-opened .chatrobo  #chatrobo-goback{
+    visibility: hidden;
+    font-size: 13px;
+    height: 20px;
+    position: relative;
+    background-color: rgba(0, 255, 76, 0.123);
+    color: #444;
+    text-align: center;
+    cursor:pointer;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    
+    transition: var(--transition);
+    --animate-delay: 0.1s;
+}
+#chatrobo-opened .chatrobo  #chatrobo-goback:hover{
+    color:#000;
+    background-color: rgba(9,184,62,.3);
+}
 #chatrobo-opened .chatrobo .chatrobo-title .chatrobo-closeBtn:hover {
     box-shadow: 0px 0px 6px 0px rgb(78, 12, 12);
     background-color: red;
 }
 
 #chatrobo-opened .chatrobo .chatrobo-messages {
-    height: 260px;
+    height: 250px;
     overflow-y: scroll;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
@@ -230,7 +248,7 @@ button:focus {
     width: 280px;
     margin: 0;
     padding: 0;
-    background-color: #FFF9C4;
+    background-color: #ddd;
 }
 
 #chatrobo-opened .chatrobo .chatrobo-messageform textarea {
@@ -290,6 +308,10 @@ button:focus {
     #chatrobo-opened .chatrobo .chatrobo-baloon .sender-title a {
         width: 95vw;
         /*300*/
+    }
+    #chatrobo-opened .chatrobo  #chatrobo-goback{
+        height: 30px;
+        font-size:16px;
     }
     #chatrobo-opened .chatrobo .chatrobo-messages {
         height: 50vh;

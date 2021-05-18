@@ -13,6 +13,8 @@ $(function() {
     var smessageFoot = '</p></div>';
 
     var sendingChecker = false;
+    var lastScrollTop = 0;
+
     document.getElementById(chatroboscreen).style.display = "block";
 
     function chatScroll() {
@@ -89,11 +91,34 @@ $(function() {
                 }
             });
             message.value = "";
-
+            
 
         }
     });
+    $('#chatrobo-goback').click(function(){
+        $('#chatrobo-messages').animate({ scrollTop: messages.scrollHeight }, 500);
+    })
+    $('#chatrobo-messages').scroll(function(){
 
+        var st = $(this).scrollTop();
+
+        var elem = $("#chatrobo-messages");
+        var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
+
+        if (st > lastScrollTop) {
+            if ((st+1) > maxScrollTop) {
+                
+                document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
+                document.getElementById('chatrobo-goback').classList.add('animate__backOutDown');
+           }
+        } else {
+            document.getElementById('chatrobo-goback').style.visibility = "visible";
+            document.getElementById('chatrobo-goback').classList.add('animate__backInUp');
+            document.getElementById('chatrobo-goback').classList.remove('animate__backOutDown');
+        }
+        console.log(st + " -> " + maxScrollTop);
+        lastScrollTop = st;
+    })
     function chatroboAdmin() {
         title.style.backgroundColor = "red";
         text.innerHTML = "ChatRobo - admin";
@@ -112,8 +137,11 @@ $(function() {
     }
 
     function chatClear() {
-
         messages.innerHTML = "";
+        sendingChecker=false;
+        document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
+
+
     }
 
     function addMessage(data) {
@@ -121,6 +149,8 @@ $(function() {
         messages.innerHTML = messages.innerHTML.replace("animate__animated animate__slideInRight", "");
         messages.innerHTML = messages.innerHTML.replace('<div><img class="loading" src="assets/image/chatrobowriting.gif"></div>', '');
         messages.innerHTML = messages.innerHTML + messageHead + data + messageFoot;
+        document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
+
         chatScroll();
         sendingChecker = false;
     }
