@@ -175,9 +175,24 @@ $(function() {
         sendingChecker = false;
     }
     $('#chatrobo-settings-openBtn').click(function() {
+        var langurl = "app/chatroboPhp/language.php";
+        var langpost = new Array();
+        langpost[0] = "langpost";
         document.getElementById('chatrobo-settings').style.display = "block";
         document.getElementById('chatrobo-settings').classList.remove('animate__bounceOutLeft');
         document.getElementById('chatrobo-settings').classList.add('animate__backInLeft');
+
+        $.ajax({
+            type: "POST",
+            url: langurl,
+            data: { langpost: langpost }, // serializes the form's elements.
+            // serializes the form's elements.
+            success: function(data) {
+                document.getElementById('chatrobo-settings-content').innerHTML = data;
+            }
+        });
+
+
     })
     $('#chatrobo-settings-closeBtn').click(function() {
         document.getElementById('chatrobo-settings').classList.remove('animate__backInLeft');

@@ -115,13 +115,25 @@
     transition: var(--transition);
 }
 
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings h1 {
+    background-color: #ff4d4d;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content {
+    font-size: 15px;
+}
+
 #chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings {
     display: none;
     width: 100%;
     height: 335px;
     position: absolute;
     top: 0;
-    background-color: #bdc3c7;
+    background-color: #4b4b4b;
     z-index: 15;
 }
 
@@ -363,6 +375,10 @@ button:focus {
     #chatrobo-opened .chatrobo .chatrobo-baloon .sender-title a {
         width: 95vw;
         /*300*/
+    }
+    #chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings h1 {
+        height: 60px;
+        ;
     }
     #chatrobo-opened .chatrobo #chatrobo-goback {
         height: 30px;
