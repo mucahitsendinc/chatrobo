@@ -28,7 +28,7 @@
 			
 			<div class="chatrobo-messageform ">
 				<div id="chatrobo-goback" class="animate__animated">
-					Son Mesajlar <i class="fas fa-arrow-down"></i>
+					Son Mesajlar  <i class="fas fa-arrow-down"></i>
 				</div>
 				<form action="" id="chatroboForm" method="post">
 					<textarea name="message" id="message" rows="2" placeholder="Merhaba ile başla..."></textarea>
