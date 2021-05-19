@@ -13,6 +13,7 @@ if (isset($_POST['newmessage'])) {
         $command=str_replace("/","",$fullcommand[0]);
         $variable=$fullcommand[1];
         $check=0;
+      ///  echo $command.'<br>'.$fullcommand[2];die;
         foreach ($_COMMANDS as $val) {
              if (in_array($command,$val)) {
                  $check++;
@@ -88,6 +89,10 @@ if (isset($_POST['newmessage'])) {
     }
     
 
+}else if (isset($_POST['adminchecker'])) {
+    if ($_SESSION['chatrobo']=="admin") {
+        echo "success";
+    }
 }
 usleep(300000);
 ?>

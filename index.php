@@ -17,12 +17,10 @@
 		<div class="chatrobo">
 			<div class="chatrobo-title" id="chatrobo-title">
 				<h1 id="title-text">ChatRobo</h1>
-				<div class="chatrobo-closeBtn" id="chatroboClosebtn">X</div>
-				
+				<div class="chatrobo-closeBtn" id="chatroboClosebtn"><i class="fas fa-times"></i></div>
+				<div class="chatrobo-settingsBtn" id="chatrobo-settings-openBtn"><i class="fas fa-cog"></i></div>
+				<div id="chatrobo-settings" class="animate__animated"><i class="fas fa-long-arrow-alt-left" id="chatrobo-settings-closeBtn"></i></div>
 			</div>
-			
-				
-					
 			<div class="chatrobo-messages" id="chatrobo-messages">
 			</div>
 			

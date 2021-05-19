@@ -1,4 +1,5 @@
 $(function() {
+    var url = 'app/chatroboPhp/index.php';
     var chatrobo = 'chatrobo';
     var chatroboscreen = 'chatrobo-opened';
     var chatroboClosebtn = 'chatroboClosebtn';
@@ -16,6 +17,24 @@ $(function() {
     var lastScrollTop = 0;
 
     document.getElementById(chatroboscreen).style.display = "block";
+
+    chatroboAdmincontrol();
+
+    function chatroboAdmincontrol() {
+        var adminchecker = new Array();
+        adminchecker[0] = "adminchecker";
+        adminchecker[1] = "";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { adminchecker: adminchecker }, // serializes the form's elements.
+            success: function(data) {
+                if (data == "success") {
+                    chatroboAdmin();
+                }
+            }
+        });
+    }
 
     function chatScroll() {
         messages.scrollTo(0, messages.scrollHeight);
@@ -49,7 +68,6 @@ $(function() {
         e.preventDefault();
 
         var form = $('#chatroboForm');
-        var url = 'app/chatroboPhp/index.php';
 
         if (message.value.length > 0 && sendingChecker == false) {
             console.log(sendingChecker);
@@ -91,14 +109,15 @@ $(function() {
                 }
             });
             message.value = "";
-            
+
 
         }
     });
-    $('#chatrobo-goback').click(function(){
+
+    $('#chatrobo-goback').click(function() {
         $('#chatrobo-messages').animate({ scrollTop: messages.scrollHeight }, 500);
     })
-    $('#chatrobo-messages').scroll(function(){
+    $('#chatrobo-messages').scroll(function() {
 
         var st = $(this).scrollTop();
 
@@ -106,13 +125,13 @@ $(function() {
         var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
 
         if (st > lastScrollTop) {
-            if ((st+1) > maxScrollTop ) {
+            if ((st + 1) > maxScrollTop) {
                 console.log((st + 1) + " -> " + maxScrollTop);
                 document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
                 document.getElementById('chatrobo-goback').classList.add('animate__backOutDown');
-           }
+            }
         } else {
-            if (maxScrollTop==0) {
+            if (maxScrollTop == 0) {
                 return;
             }
             document.getElementById('chatrobo-goback').style.visibility = "visible";
@@ -121,6 +140,7 @@ $(function() {
         }
         lastScrollTop = st;
     })
+
     function chatroboAdmin() {
         title.style.backgroundColor = "red";
         text.innerHTML = "ChatRobo - admin";
@@ -140,7 +160,7 @@ $(function() {
 
     function chatClear() {
         messages.innerHTML = "";
-        sendingChecker=false;
+        sendingChecker = false;
         document.getElementById('chatrobo-goback').classList.remove('animate__backInUp');
     }
 
@@ -154,4 +174,17 @@ $(function() {
         chatScroll();
         sendingChecker = false;
     }
+    $('#chatrobo-settings-openBtn').click(function() {
+        document.getElementById('chatrobo-settings').style.display = "block";
+        document.getElementById('chatrobo-settings').classList.remove('animate__bounceOutLeft');
+        document.getElementById('chatrobo-settings').classList.add('animate__backInLeft');
+    })
+    $('#chatrobo-settings-closeBtn').click(function() {
+        document.getElementById('chatrobo-settings').classList.remove('animate__backInLeft');
+        document.getElementById('chatrobo-settings').classList.add('animate__bounceOutLeft');
+        setTimeout(function() {
+            document.getElementById('chatrobo-settings').style.display = "none";
+
+        }, 300);
+    })
 });
