@@ -1,19 +1,22 @@
 <?php 
-require_once ('../googleTranslate/vendor/autoload.php');
 use \Statickidz\GoogleTranslate;
 
-$source = 'tr';
-$target = 'en';
-$text = "ben yürüyorum";
+if (isset($_POST)) {
+    require_once ('../googleTranslate/vendor/autoload.php');
+    $trans = new GoogleTranslate();
 
-$trans = new GoogleTranslate();
-$result = $trans->translate($source, $target, $text);
+    $source = htmlspecialchars($_POST['source']);
+    $target = htmlspecialchars($_POST['target']);
+    $text   = htmlspecialchars($_POST['text']);
+
+    $result = $trans->translate($source, $target, $text);
 
 
 
-if (isset($_POST['langpost'])) {
-    echo strval($result);
-}else{
-    echo"yok";
+    if (isset($text)) {
+        echo ($result);
+    }else{
+        echo "Hata kodu TRANSLATE01";
+    }
 }
 ?>

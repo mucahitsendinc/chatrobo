@@ -53,4 +53,15 @@ function getButton($color,$msg,$onclick=""){
     }
     echo'<button class="'.$color.'" "'.$onclick.'">'.$msg.'</button>';
 }
+function translateMessage($source,$target,$msg){
+    $curl = curl_init();
+    $langurl=str_replace("localhost","localhost:8080",str_replace("index.php","language.php",('http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'])));
+    curl_setopt($curl, CURLOPT_URL, $langurl);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, "text=".$msg."&source=".$source."&target=".$target);
+
+    $sonuc = curl_exec($curl);
+    curl_close($curl);
+    return  trim($sonuc,1);
+}
 ?>

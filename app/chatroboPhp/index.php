@@ -82,8 +82,10 @@ if (isset($_POST['newmessage'])) {
     /** Mesajlar */
     if (!isset($_SESSION['messages'])) {
         
-        echo"Mesaj test lorem ipsum<br>";
-        echo getButton("orange","Test Fonksiyon");
+        
+       
+        
+        echo translateMessage("tr","en",$message);
     }else{
         echo"Merhabadan sonraki mesajlar...";
     }
