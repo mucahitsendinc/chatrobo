@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    document.body.innerHTML = document.body.innerHTML + '<div id="chatrobo" class="animate__animated"><img src="assets/image/robot.png" alt="Chat Robo"></div><div id="chatrobo-opened" class="animate__animated"><div class="chatrobo"><div class="chatrobo-title" id="chatrobo-title"><h1 id="title-text">ChatRobo</h1><div class="chatrobo-closeBtn" id="chatroboClosebtn"><i class="fas fa-times"></i></div><div class="chatrobo-settingsBtn" id="chatrobo-settings-openBtn"><i class="fas fa-cog"></i></div><div id="chatrobo-settings" class="animate__animated"></div></div><div class="chatrobo-messages" id="chatrobo-messages"></div><div class="chatrobo-messageform "><div id="chatrobo-goback" class="animate__animated">Son Mesajlar <i class="fas fa-arrow-down"></i></div><form action="" id="chatroboForm" method="post"><textarea name="message" id="message" rows="2" placeholder="Merhaba ile başla..."></textarea><button type="submit" value="1"><i class="fas fa-paper-plane"></i></button></form></div></div></div>';
     var url = 'app/chatroboPhp/index.php';
     var chatrobo = 'chatrobo';
     var chatroboscreen = 'chatrobo-opened';
