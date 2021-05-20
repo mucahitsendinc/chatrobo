@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
     var url = 'app/chatroboPhp/index.php';
     var chatrobo = 'chatrobo';
     var chatroboscreen = 'chatrobo-opened';
@@ -19,6 +19,8 @@ $(function() {
     document.getElementById(chatroboscreen).style.display = "block";
 
     chatroboAdmincontrol();
+
+
 
     function chatroboAdmincontrol() {
         var adminchecker = new Array();
@@ -145,18 +147,23 @@ $(function() {
         title.style.backgroundColor = "red";
         text.innerHTML = "ChatRobo - admin";
         messages.innerHTML = "";
+        sendingChecker = false;
+
     }
 
     function chatroboAdminOff() {
         title.style.backgroundColor = "#09b83e";
         text.innerHTML = "ChatRobo";
         messages.innerHTML = "";
+        sendingChecker = false;
 
     }
 
     function chatCommands(deger) {
         sending.value = document.getElementById(deger).innerHTML;
     }
+
+
 
     function chatClear() {
         messages.innerHTML = "";
@@ -174,10 +181,10 @@ $(function() {
         chatScroll();
         sendingChecker = false;
     }
+
     $('#chatrobo-settings-openBtn').click(function() {
-        var langurl = "app/chatroboPhp/language.php";
-        var langpost = new Array();
-        langpost[0] = "langpost";
+        var langurl = "app/chatroboPhp/settings.php";
+        var langpost = ["langpost"];
         document.getElementById('chatrobo-settings').style.display = "block";
         document.getElementById('chatrobo-settings').classList.remove('animate__bounceOutLeft');
         document.getElementById('chatrobo-settings').classList.add('animate__backInLeft');
@@ -188,18 +195,55 @@ $(function() {
             data: { langpost: langpost }, // serializes the form's elements.
             // serializes the form's elements.
             success: function(data) {
-                document.getElementById('chatrobo-settings-content').innerHTML = data;
+                document.getElementById('chatrobo-settings').innerHTML = data;
             }
         });
 
 
-    })
-    $('#chatrobo-settings-closeBtn').click(function() {
-        document.getElementById('chatrobo-settings').classList.remove('animate__backInLeft');
-        document.getElementById('chatrobo-settings').classList.add('animate__bounceOutLeft');
-        setTimeout(function() {
-            document.getElementById('chatrobo-settings').style.display = "none";
+    });
 
-        }, 300);
-    })
+
+
+
+
 });
+
+function chatLang(gelen, gelen2) {
+    var newlang = [gelen, gelen2];
+    var newlangurl = "app/chatroboPhp/settings.php";
+    if ($('#' + gelen).hasClass('current') == false) {
+        $.ajax({
+            type: "POST",
+            url: newlangurl,
+            data: { newlang: newlang }, // serializes the form's elements.
+            // serializes the form's elements.
+            success: function(data) {
+                //console.log(data);
+                //console.log();
+                console.log(data);
+
+                data = JSON.parse(data);
+                if (data['process'] == "success") {
+                    console.log(document.getElementById(data['old']));
+                    console.log(data['new']);
+                    document.getElementById(data['old']).classList.remove('current');
+                    document.getElementById(data['new']).classList.add('current');
+                    document.getElementById('chatrobo-settings-h1').innerHTML = data['newtitle'];
+                } else {
+                    console.log(data);
+                }
+            }
+        });
+    }
+
+
+}
+
+function chatroboSettingsClose() {
+    document.getElementById('chatrobo-settings').classList.remove('animate__backInLeft');
+    document.getElementById('chatrobo-settings').classList.add('animate__bounceOutLeft');
+    setTimeout(function() {
+        document.getElementById('chatrobo-settings').style.display = "none";
+
+    }, 300);
+}

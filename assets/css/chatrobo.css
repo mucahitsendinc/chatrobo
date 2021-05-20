@@ -49,6 +49,12 @@
     background: #FFF9C4;
 }
 
+.gizliInput {
+    position: fixed;
+    margin-top: -700vh;
+    margin-bottom: -700vw;
+}
+
 #chatrobo,
 #chatrobo-opened {
     font-family: 'Kanit', sans-serif;
@@ -123,6 +129,24 @@
     align-items: center;
 }
 
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content .flags {
+    font-size: 45px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content .flags.current {
+    outline: 2px solid #b8e994;
+}
+
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content .flags.current:hover {
+    outline: 2px solid #b8e994;
+}
+
+#chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content .flags:hover {
+    outline: 1px solid #b8e994;
+}
+
 #chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content {
     font-size: 15px;
 }
@@ -166,11 +190,8 @@
 }
 
 #chatrobo-opened .chatrobo .chatrobo-title .chatrobo-settingsBtn:hover {
-    background-color: #fff;
-    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0, 0, 0, 1);
-    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0, 0, 0, 1);
-    box-shadow: inset 0px 0px 3px 2px rgba(0, 0, 0, 1);
-    color: black;
+    box-shadow: 0px 0px 4px white;
+    background-color: #00c3ff;
 }
 
 #chatrobo-opened .chatrobo #chatrobo-goback {
@@ -194,10 +215,7 @@
 }
 
 #chatrobo-opened .chatrobo .chatrobo-title .chatrobo-closeBtn:hover {
-    box-shadow: 0px 0px 6px 0px rgb(78, 12, 12);
-    -webkit-box-shadow: inset 0px 0px 3px 2px rgb(78, 12, 12);
-    -moz-box-shadow: inset 0px 0px 3px 2px rgb(78, 12, 12);
-    box-shadow: inset 0px 0px 3px 2px rgb(78, 12, 12);
+    box-shadow: 0px 0px 6px 0px red;
     background-color: red;
 }
 
@@ -379,6 +397,9 @@ button:focus {
     #chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings h1 {
         height: 60px;
         ;
+    }
+    #chatrobo-opened .chatrobo .chatrobo-title #chatrobo-settings #chatrobo-settings-content .flags {
+        font-size: 100px;
     }
     #chatrobo-opened .chatrobo #chatrobo-goback {
         height: 30px;

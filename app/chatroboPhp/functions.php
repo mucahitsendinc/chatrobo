@@ -1,5 +1,5 @@
 <?php 
-
+use \Statickidz\GoogleTranslate;
 function safer($metin){
     $safe=$metin;
     $safe=str_replace("'","",$safe);
@@ -54,14 +54,32 @@ function getButton($color,$msg,$onclick=""){
     echo'<button class="'.$color.'" "'.$onclick.'">'.$msg.'</button>';
 }
 function translateMessage($source,$target,$msg){
-    $curl = curl_init();
-    $langurl=str_replace("localhost","localhost:8080",str_replace("index.php","language.php",('http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'])));
+    /*$curl = curl_init();
+    $langurl='http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    $langurl=str_replace("localhost","localhost:8080",str_replace((pathinfo($langurl)['basename']),"language.php",$langurl));
     curl_setopt($curl, CURLOPT_URL, $langurl);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, "text=".$msg."&source=".$source."&target=".$target);
-
     $sonuc = curl_exec($curl);
     curl_close($curl);
-    return  trim($sonuc,1);
+    return  strval(trim($sonuc,1)).'';*/
+    require_once ('../googleTranslate/vendor/autoload.php');
+    $trans = new GoogleTranslate();
+
+    $source = htmlspecialchars($source);
+    $target = htmlspecialchars($target);
+    $text   = htmlspecialchars($msg);
+
+    $result = $trans->translate($source, $target, $text);
+
+
+
+    if (isset($text)) {
+        return ucfirst($result);
+    }else{
+        return "Hata kodu TRANSLATE01";
+    }
+
+    
 }
 ?>

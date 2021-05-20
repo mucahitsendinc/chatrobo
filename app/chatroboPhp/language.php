@@ -14,9 +14,9 @@ if (isset($_POST)) {
 
 
     if (isset($text)) {
-        echo ($result);
+        return ($result);
     }else{
-        echo "Hata kodu TRANSLATE01";
+        return "Hata kodu TRANSLATE01";
     }
 }
 ?>
