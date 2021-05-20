@@ -35,10 +35,10 @@ if (isset($_POST['newmessage'])) {
                 echo'<a class="commands" onclick="'.$onclick.'">/<span id="'.$command.'" >'. $command.' değer</span></a> <br>';
             }
             
-        }else if ($command=="quit" && $_SESSION['chatrobo']=="admin") {
+        }else if ($command=="cikis" && $_SESSION['chatrobo']=="admin") {
             echo "quit";
             unset($_SESSION['chatrobo']);
-        }else if ($command=="clear") {
+        }else if ($command=="temizle") {
             echo "clear";
         }else if($command=="yardim" || $command=="help"){
             echo'ChatRobo Komutları,İhtiyacın olan komutu nasıl kullanacağını öğrenmek için bana gönderirsen sana söyleyebilirim.<br><br>';
@@ -81,9 +81,6 @@ if (isset($_POST['newmessage'])) {
 
     /** Mesajlar */
     if (!isset($_SESSION['messages'])) {
-        
-        
-       
         
         echo translateMessage("tr","en",$message);
     }else{

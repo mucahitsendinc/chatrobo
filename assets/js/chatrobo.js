@@ -65,7 +65,16 @@ $(document).ready(function() {
             }
         }
 
+
     });
+    $('#message').on('input', function() {
+        var msg = document.getElementById("message");
+        if ((msg.value)[0] == "/") {
+            msg.classList.add('commandtext');
+        } else {
+            msg.classList.remove('commandtext');
+        }
+    })
     $('#chatroboForm').submit(function(e) {
         e.preventDefault();
 

@@ -55,6 +55,11 @@
     margin-bottom: -700vw;
 }
 
+.commandtext {
+    font-weight: bold !important;
+    color: rgb(0, 140, 255) !important;
+}
+
 #chatrobo,
 #chatrobo-opened {
     font-family: 'Kanit', sans-serif;

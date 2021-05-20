@@ -18,10 +18,9 @@ $_ADMIN_COMMANDS=[
 /** KULLANILMASINA İZİN VERİLEN KOMUTLAR! */
 $_COMMANDS=[
         ["tokenchatrobo","token"],
-        ["help",""],
         ["yardim",""],
-        ["quit",""],
-        ["clear",""]
+        ["cikis",""],
+        ["temizle",""]
     ];
 /** KULLANILMASINA İZİN VERİLEN DİLLER [" ÜLKE ", " KULLANDIĞI DİL " ]! */
 $_LANGUAGES=[
